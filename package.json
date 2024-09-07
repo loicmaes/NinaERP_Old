@@ -6,6 +6,9 @@
   "engines": {
     "node": ">=21.6.0"
   },
+  "prisma": {
+    "schema": "server/database/schema.prisma"
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
