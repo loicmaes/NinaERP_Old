@@ -5,6 +5,9 @@ Table User {
   email string [not null]
   password string [not null]
 
+  verificationCode string [not null]
+  verifiedAd datetime
+
   createdAt datetime [not null]
   updatedAt datetime [not null]
 }
@@ -17,6 +20,9 @@ Table UserInfo {
 
   contactEmail string [not null]
   contactPhone string
+
+  createdAt datetime [not null]
+  updatedAt datetime [not null]
 }
 Table AuthSession {
   authToken string [primary key, not null]
