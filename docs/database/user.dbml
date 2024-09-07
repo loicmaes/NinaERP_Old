@@ -1,0 +1,28 @@
+Table User {
+  uid string [primary key, not null]
+
+  login string [not null]
+  email string [not null]
+  password string [not null]
+
+  createdAt datetime [not null]
+  updatedAt datetime [not null]
+}
+Table UserInfo {
+  id integer [primary key, not null]
+  userUid string [not null]
+
+  firstName string [not null]
+  lastName string [not null]
+
+  contactEmail string [not null]
+  contactPhone string
+}
+Table AuthSession {
+  authToken string [primary key, not null]
+  userUid string [primary key, not null]
+  createdAt datetime [not null]
+  expiresAt datetime [not null]
+}
+Ref: UserInfo.userUid - User.uid
+Ref: AuthSession.userUid > User.uid
