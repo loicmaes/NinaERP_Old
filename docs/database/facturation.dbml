@@ -1,0 +1,115 @@
+Table Customer {
+  id integer [primary key, increment, not null]
+  associationUid string [not null]
+
+  name string [not null]
+  address string [not null]
+
+  contactEmail string [not null]
+  contactPhone string
+
+  createdAt datetime [not null]
+  updatedAt datetime [not null]
+}
+Table Quote {
+  id integer [primary key, increment, not null]
+  authorId integer [not null]
+  customerId integer [not null]
+  quoteNumber string [not null]
+
+  date datetime [not null]
+  validUntil datetime [not null]
+
+  status QuoteStatus [default: "draft", not null]
+  totalAmount float [default: 0, not null]
+
+  createdAt datetime [not null]
+  updatedAt datetime [not null]
+}
+enum QuoteStatus {
+  draft
+  waiting
+  signed
+  cancelled
+}
+Table Invoice {
+  id integer [primary key, increment, not null]
+  authorId integer [not null]
+  customerId integer [not null]
+  quoteId integer
+  invoiceNumber string [not null]
+
+  date datetime [not null]
+  dueDate datetime [not null]
+
+  status InvoiceStatuts [default: "draft", not null]
+  invoiceType InvoiceType [not null]
+
+  totalAmount float [default: 0, not null]
+
+  createdAt datetime [not null]
+  updatedAt datetime [not null]
+}
+enum InvoiceStatus {
+  draft
+  waiting
+  payed
+  late
+  cancelled
+}
+enum InvoiceType {
+  advance
+  final
+}
+Table InvoiceItem {
+  id integer [primary key, increment, not null]
+  invoiceId integer [not null]
+
+  description string
+
+  quantity integer [default: 1, not null]
+  unitPrice float [default: 0, not null]
+  totalPrice float [default: 0, not null]
+
+  createdAt datetime
+  updatedAt datetime
+}
+Table CreditNote {
+  id integer [primary key, increment, not null]
+  invoiceId integer [not null]
+  creditNumber string [not null]
+
+  date datetime [not null]
+  amount float [not null]
+  reason string
+
+  createdAt datetime
+  updatedAt datetime
+}
+Table Payment {
+  id integer [primary key, increment, not null]
+  invoiceId integer [not null]
+
+  paymentDate datetime [not null]
+  amount float [not null]
+  paymentMethod PaymentMethod
+
+  createdAt datetime
+  updatedAt datetime
+}
+enum PaymentMethod {
+  creditCard
+  cash
+  restorationTicket // Ticket restaurant
+  ticket // Chèque
+  vacationTicket // Chèque vacances
+}
+Ref: Quote.authorId > AssociationMember.id
+Ref: Invoice.authorId > AssociationMember.id
+Ref: Quote.customerId > Customer.id
+Ref: Invoice.customerId > Customer.id
+Ref: Customer.associationUid > Association.uid
+Ref: Invoice.quoteId > Quote.id
+Ref: Payment.invoiceId > Invoice.id
+Ref: InvoiceItem.invoiceId > Invoice.id
+Ref: CreditNote.invoiceId > Invoice.id

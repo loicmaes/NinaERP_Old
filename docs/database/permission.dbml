@@ -1,0 +1,4 @@
+Table Permission {
+  id integer [primary key, not null]
+  name string
+}

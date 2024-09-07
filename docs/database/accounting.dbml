@@ -1,0 +1,44 @@
+Table BankingAccount {
+  id integer [primary key, not null]
+  associationUid string [not null]
+  name string [not null]
+
+  iban string
+  bic string
+
+  totalAmount float [default: 0, not null]
+
+  createdAt datetime [not null]
+  updatedAt datetime [not null]
+}
+Table Transaction {
+  id integer [primary key, not null]
+  authorId integer [not null]
+
+  description string
+
+  date datetime
+  transactionType string
+
+  createdAt datetime [not null]
+  updatedAt datetime [not null]
+}
+Table TransactionLine {
+  id integer [primary key, not null]
+  transactionId integer [not null]
+  bankingAccountId integer [not null]
+
+  description string
+
+  debit float [default: 0, not null]
+  credit float [default: 0, not null]
+
+  amount float [default: 0, not null]
+
+  createdAt datetime [not null]
+  updatedAt datetime [not null]
+}
+Ref: BankingAccount.associationUid > Association.uid
+Ref: TransactionLine.bankingAccountId > BankingAccount.id
+Ref: TransactionLine.transactionId > Transaction.id
+Ref: Transaction.authorId > AssociationMember.id

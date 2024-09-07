@@ -1,0 +1,52 @@
+Table Association {
+  uid string [primary key, not null]
+
+  siret string
+  siren string
+
+  createdAt datetime [not null]
+  updatedAt datetime [not null]
+}
+Table AssociationInfo {
+  id integer [primary key, not null]
+  associationUid string [not null]
+
+  name string [not null]
+  address string [not null]
+
+  contactEmail string [not null]
+  contactPhone string
+
+  creationTime datetime [not null]
+}
+Table AssociationMember {
+  id integer [primary key, not null]
+
+  associationUid string [not null]
+  userUid string [not null]
+  roleId string [not null]
+
+  createdAt datetime [not null]
+  updatedAt datetime [not null]
+  archivedAt datetime
+}
+Table AssociationRole {
+  id integer [primary key, not null]
+  name string [not null]
+}
+Table AssociationRolePermission {
+  roleId integer [primary key, not null]
+  permissionId integer [primary key, not null]
+}
+Table AssociationMemberPermission {
+  memberId integer [primary key, not null]
+  permissionId integer [primary key, not null]
+}
+Ref: AssociationInfo.associationUid - Association.uid
+Ref: AssociationMember.associationUid > Association.uid
+Ref: AssociationMember.userUid > User.uid
+Ref: AssociationMember.roleId > AssociationRole.id
+Ref: AssociationRolePermission.roleId > AssociationRole.id
+Ref: AssociationRolePermission.permissionId > Permission.id
+Ref: AssociationMemberPermission.memberId > AssociationMember.id
+Ref: AssociationMemberPermission.permissionId > Permission.id
