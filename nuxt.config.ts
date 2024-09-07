@@ -1,12 +1,20 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', 'shadcn-nuxt', "@nuxtjs/google-fonts", "@nuxt/eslint"],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', 'shadcn-nuxt', "@nuxtjs/google-fonts", "@nuxt/eslint", "@prisma/nuxt"],
   tailwindcss: {
     cssPath: ["assets/css/tailwind.css", { injectPosition: "first" }],
     configPath: "tailwind.config.ts",
     exposeConfig: false,
     viewer: true,
+  },
+  eslint: {
+    checker: true,
+    stylistic: {
+      indent: 2,
+      semi: true,
+      quote: "double",
+    }
   },
   colorMode: {
     classSuffix: "",

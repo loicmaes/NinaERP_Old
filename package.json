@@ -18,6 +18,7 @@
   "dependencies": {
     "@nuxtjs/color-mode": "^3.4.4",
     "@nuxtjs/google-fonts": "^3.2.0",
+    "@prisma/nuxt": "^0.0.35",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-vue-next": "^0.439.0",
@@ -31,6 +32,8 @@
   },
   "devDependencies": {
     "@nuxt/eslint": "^0.5.6",
-    "@nuxtjs/tailwindcss": "^6.12.1"
+    "@nuxtjs/tailwindcss": "^6.12.1",
+    "@prisma/client": "^5.19.1",
+    "vite-plugin-eslint2": "^4.4.0"
   }
 }
