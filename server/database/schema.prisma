@@ -6,3 +6,54 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+// USER
+model User {
+  uid String @id @default(uuid())
+
+  login    String
+  email    String
+  password String
+
+  verificationCode String
+  verifiedAt       DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userInfo     UserInfo?
+  authSessions AuthSession[]
+
+  @@map("users")
+}
+
+model UserInfo {
+  id      Int    @id @default(autoincrement())
+  userUid String @unique
+
+  firstName String
+  lastName  String
+
+  contactEmail String
+  contactPhone String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userUid], references: [uid])
+
+  @@map("userInfo")
+}
+
+model AuthSession {
+  authToken String
+  userUid   String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userUid], references: [uid])
+
+  @@id([authToken, userUid])
+  @@map("authSessions")
+}
