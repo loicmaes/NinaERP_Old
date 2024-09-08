@@ -2,12 +2,14 @@ export interface User {
   uid: string;
   login: string;
   email: string;
-  info: UserInfo;
+  password: string;
+  userInfo?: UserInfo;
   verifiedAt?: Date;
   createdAt: Date;
   updatedAt: Date;
 }
 export interface UserInfo {
+  id: number;
   firstName: string;
   lastName: string;
   contactEmail: string;
@@ -19,11 +21,10 @@ export interface CreateUserBody {
   login: string;
   email: string;
   password: string;
-  info: CreateUserInfoBody;
+  userInfo: CreateUserInfoBody;
 }
 export interface CreateUserInfoBody {
   firstName: string;
   lastName: string;
-  contactEmail: string;
   contactPhone?: string;
 }
