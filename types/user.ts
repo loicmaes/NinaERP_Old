@@ -8,8 +8,12 @@ export interface User {
   createdAt: Date;
   updatedAt: Date;
 }
+export interface RichUser extends User {
+  verificationCode: string;
+}
 export interface UserInfo {
   id: number;
+  userUid: string;
   firstName: string;
   lastName: string;
   contactEmail: string;
@@ -26,5 +30,6 @@ export interface CreateUserBody {
 export interface CreateUserInfoBody {
   firstName: string;
   lastName: string;
+  contactEmail?: string;
   contactPhone?: string;
 }
