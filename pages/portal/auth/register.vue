@@ -10,6 +10,8 @@ definePageMeta({
   layout: "auth",
 });
 
+await useStrictAccess(false);
+
 const currentStep = ref(1);
 const schemas = [
   z.object({
@@ -51,8 +53,19 @@ const steps: StepperStep[] = [
   },
 ];
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function onSubmit(values: any) {
-  console.table(values);
+async function onSubmit(values: any) {
+  const { firstName, lastName, login, email, password, contactEmail, contactPhone } = values;
+  await registerUser({
+    login,
+    email,
+    password,
+    userInfo: {
+      firstName,
+      lastName,
+      contactEmail,
+      contactPhone,
+    },
+  });
 }
 </script>
 
