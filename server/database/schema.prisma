@@ -51,7 +51,7 @@ model AuthSession {
   userUid   String
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  expiresAt DateTime
 
   user User @relation(fields: [userUid], references: [uid], onDelete: Cascade)
 
