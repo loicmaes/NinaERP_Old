@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@iconoir/vue':
+        specifier: ^7.9.0
+        version: 7.9.0(vue@3.5.3(typescript@5.5.4))
       '@nuxtjs/color-mode':
         specifier: ^3.4.4
         version: 3.4.4(magicast@0.3.5)(rollup@4.21.2)
@@ -755,6 +758,15 @@ packages:
   '@humanwhocodes/retry@0.3.0':
     resolution: {integrity: sha512-d2CGZR2o7fS6sWB7DG/3a95bGKQyHMACZ5aW8qGkkqQpUoZV6C0X7Pc7l4ZNMZkfNBf4VWNe9E1jRsf0G146Ew==}
     engines: {node: '>=18.18'}
+
+  '@iconoir/vue@7.9.0':
+    resolution: {integrity: sha512-vkwzGFDtVxHWfNhzMUWCqZp/l4SppmeRszWGD3u/cUkEnyLoYFbgY7wiYn3VP85EeXOsCbxyfZPBVLaluKBeOw==}
+    peerDependencies:
+      '@vue/composition-api': '>=1.0.0-rc.1'
+      vue: ^2.6.11 || >=3.0.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
 
   '@internationalized/date@3.5.5':
     resolution: {integrity: sha512-H+CfYvOZ0LTJeeLOqm19E3uj/4YjrmOFtBufDHPfvtI80hFAMqtrp7oCACpe4Cil5l8S0Qu/9dYfZc/5lY8WQQ==}
@@ -4927,6 +4939,11 @@ snapshots:
   '@humanwhocodes/module-importer@1.0.1': {}
 
   '@humanwhocodes/retry@0.3.0': {}
+
+  '@iconoir/vue@7.9.0(vue@3.5.3(typescript@5.5.4))':
+    dependencies:
+      vue: 3.5.3(typescript@5.5.4)
+      vue-demi: 0.14.10(vue@3.5.3(typescript@5.5.4))
 
   '@internationalized/date@3.5.5':
     dependencies:

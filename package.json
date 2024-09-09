@@ -19,6 +19,7 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@iconoir/vue": "^7.9.0",
     "@nuxtjs/color-mode": "^3.4.4",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@vee-validate/nuxt": "^4.13.2",
