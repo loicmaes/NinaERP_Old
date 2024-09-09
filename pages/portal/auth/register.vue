@@ -284,12 +284,11 @@ function onSubmit(values: any) {
         <Button
           variant="link"
           size="sm"
-          class="-mx-3"
+          class="-mx-3 text-foreground"
           as-child
         >
           <NuxtLink
             to="/portal/auth/register"
-            class="text-foreground"
           >
             Je n'ai pas encore de compte !
           </NuxtLink>
