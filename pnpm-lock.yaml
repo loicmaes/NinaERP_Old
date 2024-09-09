@@ -14,6 +14,9 @@ importers:
       '@nuxtjs/google-fonts':
         specifier: ^3.2.0
         version: 3.2.0(magicast@0.3.5)(rollup@4.21.2)
+      '@vee-validate/nuxt':
+        specifier: ^4.13.2
+        version: 4.13.2(magicast@0.3.5)(rollup@4.21.2)(vue@3.5.3(typescript@5.5.4))
       '@vee-validate/zod':
         specifier: ^4.13.2
         version: 4.13.2(vue@3.5.3(typescript@5.5.4))
@@ -1305,6 +1308,9 @@ packages:
     resolution: {integrity: sha512-Q45F/KOvDeitc8GkfkPY45V8Dmw1m1b9A/aHM5A2BwRV8GyoRV+HRWVw5h02e0AO1TsICvcW8tI90qeCM2oGSA==}
     peerDependencies:
       vue: '>=2.7 || >=3'
+
+  '@vee-validate/nuxt@4.13.2':
+    resolution: {integrity: sha512-rpYYO2isCrgHRdJnKRXGPn8aqhyZvCPUJgNubftPum1txbngkO/LNiFsZdFDO7auGprDAQf7axpszRfeKoCGVg==}
 
   '@vee-validate/zod@4.13.2':
     resolution: {integrity: sha512-y1aqelutD6btX2ayZk3w8udClAykptphlGLwu0vlCqY2r9mrJqMn1EKqtcwXAvEom+ceTcHJOwGr2FUA7i+ZEg==}
@@ -5716,6 +5722,18 @@ snapshots:
       hookable: 5.5.3
       unhead: 1.10.4
       vue: 3.5.3(typescript@5.5.4)
+
+  '@vee-validate/nuxt@4.13.2(magicast@0.3.5)(rollup@4.21.2)(vue@3.5.3(typescript@5.5.4))':
+    dependencies:
+      '@nuxt/kit': 3.13.1(magicast@0.3.5)(rollup@4.21.2)
+      local-pkg: 0.5.0
+      vee-validate: 4.13.2(vue@3.5.3(typescript@5.5.4))
+    transitivePeerDependencies:
+      - magicast
+      - rollup
+      - supports-color
+      - vue
+      - webpack-sources
 
   '@vee-validate/zod@4.13.2(vue@3.5.3(typescript@5.5.4))':
     dependencies:
