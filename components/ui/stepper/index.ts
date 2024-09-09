@@ -5,3 +5,8 @@ export { default as StepperTrigger } from "./StepperTrigger.vue";
 export { default as StepperTitle } from "./StepperTitle.vue";
 export { default as StepperDescription } from "./StepperDescription.vue";
 export { default as StepperSeparator } from "./StepperSeparator.vue";
+export interface StepperStep {
+  step: number;
+  title: string;
+  description: string;
+}
