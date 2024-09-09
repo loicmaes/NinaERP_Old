@@ -41,7 +41,7 @@ model UserInfo {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  user User @relation(fields: [userUid], references: [uid])
+  user User @relation(fields: [userUid], references: [uid], onDelete: Cascade)
 
   @@map("userInfo")
 }
@@ -53,7 +53,7 @@ model AuthSession {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  user User @relation(fields: [userUid], references: [uid])
+  user User @relation(fields: [userUid], references: [uid], onDelete: Cascade)
 
   @@id([authToken, userUid])
   @@map("authSessions")
