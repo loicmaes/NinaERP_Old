@@ -7,7 +7,7 @@
     "node": ">=21.6.0"
   },
   "prisma": {
-    "schema": "server/database/schema.prisma"
+    "schema": "./server/database/schema.prisma"
   },
   "scripts": {
     "build": "nuxt build",
@@ -19,9 +19,12 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@iconoir/vue": "^7.9.0",
     "@nuxtjs/color-mode": "^3.4.4",
     "@nuxtjs/google-fonts": "^3.2.0",
-    "@prisma/nuxt": "^0.0.35",
+    "@vee-validate/nuxt": "^4.13.2",
+    "@vee-validate/zod": "^4.13.2",
+    "@vueuse/core": "^11.0.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-vue-next": "^0.439.0",
@@ -30,13 +33,17 @@
     "shadcn-nuxt": "^0.10.4",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
+    "vee-validate": "^4.13.2",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@nuxt/eslint": "^0.5.6",
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@prisma/client": "^5.19.1",
+    "prisma": "^5.19.1",
+    "typescript": "^5.5.4",
     "vite-plugin-eslint2": "^4.4.0"
   }
 }
