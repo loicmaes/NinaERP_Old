@@ -14,21 +14,6 @@ const verificationCodeOptions: CodeGeneratorOptions = {
 
 export async function createUser(body: CreateUserBody): Promise<RichUser> {
   const verificationCode = generateCode(verificationCodeOptions);
-  return await prisma.user.create({
-    data: {
-      ...body,
-      verificationCode,
-      userInfo: {
-        create: {
-          ...body.userInfo,
-          contactEmail: body.userInfo.contactEmail ?? body.email,
-        },
-      },
-    },
-    include: {
-      userInfo: true,
-    },
-  }) as RichUser;
   try {
     return await prisma.user.create({
       data: {
@@ -58,4 +43,16 @@ export async function createUser(body: CreateUserBody): Promise<RichUser> {
 
     throw e;
   }
+}
+
+export async function recoverUser(userUid: string): Promise<RichUser | null> {
+  const user = await prisma.user.findUnique({
+    where: {
+      uid: userUid,
+    },
+    include: {
+      userInfo: true,
+    },
+  });
+  return user ? user as RichUser : null;
 }

@@ -26,3 +26,16 @@ export async function createAuthSession(body: CreateAuthSessionBody): Promise<Au
     },
   });
 }
+
+export async function recoverSession(body: { authToken: string; userUid: string }): Promise<AuthSession | null> {
+  return await prisma.authSession.findUnique({
+    where: {
+      authToken_userUid: {
+        ...body,
+      },
+      expiresAt: {
+        gt: new Date(),
+      },
+    },
+  });
+}
